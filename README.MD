@@ -8,6 +8,10 @@ launchctl start pro.mchus.arb
 launchctl stop pro.mchus.arb
 launchctl list
 
-## Automate install
+## Install script
 
 bash <(curl -s https://raw.githubusercontent.com/mchus/arb/master/install)
+
+## Remove script
+
+bash <(curl -s https://github.com/mchus/arb/blob/master/remove)

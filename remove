@@ -1,0 +1,5 @@
+#!/bin/bash
+launchctl stop pro.mchus.arb
+launchctl unload ~/Library/LaunchAgents/pro.mchus.arb.plist
+rm -f ~/Library/LaunchAgents/pro.mchus.arb.plist
+rm -rf ~/.backup
