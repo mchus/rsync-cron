@@ -6,7 +6,7 @@
     <string>pro.mchus.arb</string>
     <key>ProgramArguments</key>
     <array>
-        <string>~/backup/rsync.sh</string>
+        <string>~/.backup/rsync.sh</string>
     </array>
     <key>StartInterval</key>
     <integer>200</integer>
