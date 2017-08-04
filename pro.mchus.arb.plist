@@ -9,6 +9,6 @@
         <string>~/.backup/rsync.sh</string>
     </array>
     <key>StartInterval</key>
-    <integer>200</integer>
+    <integer>300</integer>
 </dict>
 </plist>

@@ -1,5 +1,5 @@
 
-# Apple rsync backup for home folders with launchagents integration
+# macOS rsync backup for home folders with launchagents integration
 
 ## Usage
 ```bash
@@ -13,8 +13,8 @@ launchctl list
 
 ## Quick install script
 
-bash <(curl -s https://raw.githubusercontent.com/mchus/arb/master/install)
+    bash <(curl -s https://raw.githubusercontent.com/mchus/arb/master/install)
 
 ## Quick remove script
 
-bash <(curl -s https://github.com/mchus/arb/blob/master/remove)
+    bash <(curl -s https://github.com/mchus/arb/blob/master/remove)
