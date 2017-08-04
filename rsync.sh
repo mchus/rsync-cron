@@ -31,3 +31,4 @@ fi
 rsync --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.fseventsd' --exclude '.rsync.pid' --checksum --archive --delete ~ $SHAREPATH/.backup
 
 rm $PIDFILE
+\
