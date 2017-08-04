@@ -1,5 +1,5 @@
 #!/bin/bash
 curl curl -s https://raw.githubusercontent.com/mchus/arb/master/pro.mchus.arb.plist ~/Library/LaunchAgents/pro.mchus.arb.plist
-curl curl -s https://raw.githubusercontent.com/mchus/arb/master/sync.sh ~/backup/rsync.sh
+curl curl -s https://raw.githubusercontent.com/mchus/arb/master/rsync.sh ~/backup/rsync.sh
 launchctl load ~/Library/LaunchAgents/pro.mchus.arb.plist
 launchctl start pro.mchus.arb
