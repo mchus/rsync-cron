@@ -1,0 +1,7 @@
+#!/bin/bash
+curl curl -s ~/Library/LaunchAgents/pro.mchus.arb.plist
+
+
+
+launchctl load ~/Library/LaunchAgents/pro.mchus.arb.plist
+launchctl start pro.mchus.arb
