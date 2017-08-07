@@ -2,7 +2,7 @@
 
 PATH_FROM=/data/from
 PATH_TO=/data/to
-PIDFILE=/rsync.pid
+PIDFILE=/data/rsync.pid
 
 if [ -f $PIDFILE ]
 then

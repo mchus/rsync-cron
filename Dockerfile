@@ -8,6 +8,7 @@ RUN apk update \
  && apk add --no-cache \
             rsync \
             dcron \
+            util-linux \
  && rm -rf /var/cache/apk/*
 
 #create data dirs
@@ -21,12 +22,14 @@ RUN mkdir -p /var/log/cron \
  && mkdir -m 0644 -p /etc/cron.d
 
 #get rsync PID script for preventing multiple rsync launches
-ADD https://raw.githubusercontent.com/mchus/arb/docker-version/rsync.sh /
+#ADD https://raw.githubusercontent.com/mchus/arb/docker-version/rsync.sh /
 
 RUN chmod +x /rsync.sh
 
 #add crontab record for rsync script
-RUN crontab -l | { cat; echo "* * * * * sh /rsync.sh"; } | crontab -
+#RUN crontab -l | { cat; echo "* * * * * sh /rsync.sh"; } | crontab -
+RUN crontab -l | { cat; echo "* * * * * /usr/bin/flock -n /.sync_lock -c \"/usr/bin/rsync --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.fseventsd'  --checksum --archive --delete /data/from/ /data/to/\""; } | crontab -
+
 
 #define volume mounts
 VOLUME /data/from
