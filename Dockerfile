@@ -1,7 +1,7 @@
 FROM alpine:3.6
 
 LABEL maintainer="Mikhail Chusavitin chusavitin@gmail.com"
-LABEL version="1.1"
+LABEL version="1.2"
 # Install rsynbc and dcron.
 RUN apk update \
  && apk upgrade \
@@ -23,8 +23,7 @@ RUN mkdir -p /var/log/cron \
 
 #get rsync PID script for preventing multiple rsync launches
 #ADD https://raw.githubusercontent.com/mchus/arb/docker-version/rsync.sh /
-
-RUN chmod +x /rsync.sh
+#RUN chmod +x /rsync.sh
 
 #add crontab record for rsync script
 #RUN crontab -l | { cat; echo "* * * * * sh /rsync.sh"; } | crontab -
