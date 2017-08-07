@@ -1,7 +1,7 @@
 FROM alpine:3.6
 
 LABEL maintainer="Mikhail Chusavitin chusavitin@gmail.com"
-LABEL version="1.0"
+LABEL version="1.1"
 # Install rsynbc and dcron.
 RUN apk update \
  && apk upgrade \
