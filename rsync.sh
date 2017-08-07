@@ -30,5 +30,4 @@ else
   fi
 fi
 rsync --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.fseventsd' --exclude 'rsync.pid' --checksum --archive --delete $PATH_FROM $PATH_TO
-
 rm $PIDFILE
