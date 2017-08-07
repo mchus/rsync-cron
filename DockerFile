@@ -18,7 +18,11 @@ RUN mkdir -p /var/log/cron \
  && mkdir -m 0644 -p /etc/cron.d
 
 ADD https://raw.githubusercontent.com/mchus/arb/master/rsync.sh /rsync.sh
+RUN chmod +x /rsync.sh
+
 RUN crontab -l | { cat; echo "10 * * * * /rsync.sh"; } | crontab -
 
 VOLUME /data/from
 VOLUME /data/to
+
+CMD crond -s /var/spool/cron/crontabs -b -L /var/log/cron/cron.log "$@" && tail -f /var/log/cron/cron.log

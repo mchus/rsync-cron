@@ -1,7 +1,8 @@
 #!/bin/bash
 
-PIDFILE=~/.backup/rsync.pid
-SHAREPATH=/Volumes/homes-1
+PATH_FROM=/data/from
+PATH_TO=/data/to
+PIDFILE=/rsync.pid
 
 if [ -f $PIDFILE ]
 then
@@ -28,6 +29,6 @@ else
     exit 1
   fi
 fi
-rsync --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.fseventsd' --exclude 'rsync.pid' --checksum --archive --delete ~ $SHAREPATH/.backup
+rsync --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.fseventsd' --exclude 'rsync.pid' --checksum --archive --delete $PATH_FROM $PATH_TO
 
 rm $PIDFILE
