@@ -9,4 +9,5 @@ rsync scrpit with little preventing double launch hack based on PID file.
 
 ## Usage for macOS
 Install docker for mac os from [official docker repo](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac)
-docker run --rm -d -v /data/from:/~ -v /data/to:/Volumes/homes-1/.backup mchus/duplicator 
+
+``` docker run --rm -d -v /~:/data/from -v /Volumes/homes-1/.backup:/data/to mchus/duplicator 
