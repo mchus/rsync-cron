@@ -1,20 +1,11 @@
 
-# macOS rsync backup for home folders with launchagents integration
+# simple folder duplicator for macOS
 
-## Usage
-```bash
+Simple async file replication script. Duplicate data from "/data/from" mount point to "
+/data/to".
 
-launchctl load ~/Library/LaunchAgents/pro.mchus.arb.plist
-launchctl unload ~/Library/LaunchAgents/pro.mchus.arb.plist
-launchctl start pro.mchus.arb
-launchctl stop pro.mchus.arb
-launchctl list
-```
+Using every minute cron and rsync with " --checksum --archive --delete".
+rsync scrpit with little preventing double launch hack based on PID file.
 
-## Quick install script
-
-    bash <(curl -s https://raw.githubusercontent.com/mchus/arb/master/install)
-
-## Quick remove script
-
-    bash <(curl -s https://github.com/mchus/arb/blob/master/remove)
+## Usage for macOS
+docker run -rm -d mchus/duplicator -v /data/from ~ -v /data/to /Volumes/homes-1/.backup

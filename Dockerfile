@@ -26,7 +26,7 @@ ADD https://raw.githubusercontent.com/mchus/arb/docker-version/rsync.sh /
 RUN chmod +x /rsync.sh
 
 #add crontab record for rsync script
-RUN crontab -l | { cat; echo "*/3 * * * * sh /rsync.sh"; } | crontab -
+RUN crontab -l | { cat; echo "* * * * * sh /rsync.sh"; } | crontab -
 
 #define volume mounts
 VOLUME /data/from
