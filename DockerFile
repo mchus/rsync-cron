@@ -20,7 +20,7 @@ RUN mkdir -p /var/log/cron \
 ADD https://raw.githubusercontent.com/mchus/arb/master/rsync.sh /rsync.sh
 RUN chmod +x /rsync.sh
 
-RUN crontab -l | { cat; echo "10 * * * * /rsync.sh"; } | crontab -
+RUN crontab -l | { cat; echo "*/3 * * * * /rsync.sh"; } | crontab -
 
 VOLUME /data/from
 VOLUME /data/to
