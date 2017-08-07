@@ -1,8 +1,8 @@
 FROM alpine:3.6
 
 LABEL maintainer="Mikhail Chusavitin chusavitin@gmail.com"
-LABEL version="1.2"
-# Install rsynbc and dcron.
+LABEL version="1.2.1"
+# Install rsync, dcron and util-linux for flock
 RUN apk update \
  && apk upgrade \
  && apk add --no-cache \
@@ -21,12 +21,8 @@ RUN mkdir -p /var/log/cron \
  && touch /var/log/cron/cron.log \
  && mkdir -m 0644 -p /etc/cron.d
 
-#get rsync PID script for preventing multiple rsync launches
-#ADD https://raw.githubusercontent.com/mchus/arb/docker-version/rsync.sh /
-#RUN chmod +x /rsync.sh
 
 #add crontab record for rsync script
-#RUN crontab -l | { cat; echo "* * * * * sh /rsync.sh"; } | crontab -
 RUN crontab -l | { cat; echo "* * * * * /usr/bin/flock -n /.sync_lock -c \"/usr/bin/rsync --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.fseventsd'  --checksum --archive --delete /data/from/ /data/to/\""; } | crontab -
 
 
