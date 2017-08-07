@@ -1,0 +1,24 @@
+FROM ubuntu:14.04
+
+MAINTAINER Mikhail Chusavitin chusavitin@gmail.com
+
+RUN apk update \
+ && apk upgrade \
+ && apk add --no-cache \
+            rsync \
+            dcron \
+ && rm -rf /var/cache/apk/*
+
+RUN mkdir -p /data/from \
+ && mkdir -p /data/to
+
+RUN mkdir -p /var/log/cron \
+ && mkdir -m 0644 -p /var/spool/cron/crontabs \
+ && touch /var/log/cron/cron.log \
+ && mkdir -m 0644 -p /etc/cron.d
+
+ADD https://raw.githubusercontent.com/mchus/arb/master/rsync.sh /rsync.sh
+RUN crontab -l | { cat; echo "10 * * * * /rsync.sh"; } | crontab -
+
+VOLUME /data/from
+VOLUME /data/to
